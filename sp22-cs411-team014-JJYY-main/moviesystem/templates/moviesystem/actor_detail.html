@@ -1,0 +1,44 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Actor - {{ actor }}
+{% endblock %}
+
+{% block content %}
+    <div class="ml-3 text-light fw-light" >
+    <hr>
+    <h2 class="text-light fw-light fs-2">{{ actor }}</h2>
+
+    <section class="text-light fw-light fs-6 mb-3">
+        <table>
+            <tr>
+                <th>name:</th>
+                <td>{{ actor.name }}</td>
+            </tr>
+            <tr>
+                <th>BirthYear:</th>
+                <td>{{ actor.birthYear }}</td>
+            </tr>
+        </table>
+                    <div class="col-md-4">
+                        <img class="img-fluid" alt="" src="{{ actor.picture }}">
+                    </div>
+    </section>
+
+
+    <section class="text-light">
+        <h3 class="text-light fw-light fs-2">Act Movie List</h3>
+        <ul>
+            {% for act in act_list %}
+                <li>
+                    <a class="text-light" href="{{ act.movieID.get_absolute_url }}">{{ act.Foractor }}</a>
+                </li>
+                <th>roleName:</th>
+                <td>{{ act.roleName }}</td>
+            {% empty %}
+                <li><em>The actor is not currently act for any movies.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+    </div>
+{% endblock %}

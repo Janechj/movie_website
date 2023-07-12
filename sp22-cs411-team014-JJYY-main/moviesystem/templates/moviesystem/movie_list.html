@@ -1,0 +1,56 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Movie List
+{% endblock %}
+{% block content %}
+    <ul class="text-light fw-light">
+
+    <h2 class="text-light fw-light fs-2">Movie List</h2>
+    <hr>
+{#    <div>#}
+{#     <a href="{% url 'courseinfo_course_create_urlpattern' %}">#}
+{#        Create New Course</a>#}
+{#    </div>#}
+    <div class="text-light">
+        {% for movie in movie_list %}
+{#            <li>#}
+{#                <a class="text-light" href="{{ movie.get_absolute_url }}">{{ movie }}</a>#}
+{#            </li>#}
+             <div class="card mb-3"  style="background-color: black">
+                <div class="row">
+                    <div class="card-body">
+                            <a class="text-light" href="{{ movie.get_absolute_url }}">{{ movie }}</a>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="img-fluid" alt="" src="{{ movie.picture }}">
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <li><em>There are currently no section available.</em></li>
+        {% endfor %}
+
+<nav aria-label="Page navigation example">
+      {% if is_paginated %}
+          <ul class="justify-content-center pagination"  >
+      {% if previous_page_url %}
+          <a class="page-link" href="{{ previous_page_url }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span></a>
+{#      </a>#}
+{#              <li class="page-item"><a class="page-link" href="">Previous</a></li>#}
+      {% endif %}
+        <li class="page-item"><a class="page-link">Page {{ movie_list.number }}
+        of {{ paginator.num_pages }}</a></li>
+      {% if next_page_url %}
+             <a class="page-link" href="{{ next_page_url }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span></a>
+{#          <li class="page-item"><a class="page-link" href="{{ next_page_url }}">Next</a></li>#}
+      {% endif %}
+    </ul>
+  {% endif %}
+</nav>
+    </div>
+
+    </ul>
+{% endblock %}

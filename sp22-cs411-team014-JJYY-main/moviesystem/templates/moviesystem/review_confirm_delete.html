@@ -1,0 +1,19 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Delete Review
+{% endblock %}
+
+{% block content %}
+    <form class="text-light"
+        action="{{ review.get_delete_url }}"
+        method="post">
+        {% csrf_token %}
+        <p>
+            Are you sure that you want to delete
+           review {{ review }}?
+        </p>
+        <a class="text-light" href="{{ review.get_user_absolute_url }}">Cancel</a>
+        <button type="submit">Delete review</button>
+    </form>
+{% endblock %}

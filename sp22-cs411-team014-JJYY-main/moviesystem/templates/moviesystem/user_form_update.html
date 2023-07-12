@@ -1,0 +1,15 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Update User profile
+{% endblock %}
+
+{% block content %}
+    <form class="text-light"
+        action="{{ user.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update user Profile</button>
+    </form>
+{% endblock %}

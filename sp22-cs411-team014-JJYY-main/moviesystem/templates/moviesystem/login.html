@@ -1,0 +1,22 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+<BODY TEXT="WHITE">
+    <form style="margin:auto" TEXT="WHITE"><p>{{error_msg}}</p></form>
+
+    <form class="navbar-form search_form" action="{% url 'usrSearch' %}" style="margin:auto;max-width:300px">
+                    <div class="form-group row">
+                        <input type="text" name='usr' class="form-control" placeholder="Username" width="300"/>
+                        <input type="text" name='pwd' class="form-control" placeholder="Password" width="300"/>
+                        <button type="submit" class="btn-outline-primary mt-3 col-md-4">
+                            Login
+                        <i class="fa fa-search"></i></button>
+
+                    </div>
+                </form>
+</BODY>
+{% endblock %}

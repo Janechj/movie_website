@@ -1,0 +1,88 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Movie - {{ movie }}
+{% endblock %}
+
+{% block content %}
+    <div class="ml-3 text-light fw-light" >
+    <hr>
+    <h2 class="text-light fw-light fs-2 ">{{ movie }}</h2>
+
+    <section class="text-light fw-light fs-6 mb-4">
+        <table>
+            <tr>
+                <th >name:</th>
+                <td class="text-light fw-light fs-5">{{ movie.name }}</td>
+            </tr>
+            <tr>
+                <th>releaseYear:</th>
+                <td>{{ movie.releaseDate }}</td>
+            </tr>
+            <tr>
+                <th>Duration:</th>
+                <td>{{ movie.duration }} min </td>
+            </tr>
+            <tr>
+                <th>Genre:</th>
+                <td>{{ movie.genres }}</td>
+            </tr>
+            <tr>
+                <th>Rating From Tomato:</th>
+                <td>{{ movie.ratingFromTomato }}</td>
+            </tr>
+            <tr>
+                <th>Rating From IMDB:</th>
+                <td>{{ movie.ratingFromIMDB }}</td>
+            </tr>
+            <tr>
+                <th>content Rating:</th>
+                <td>{{ movie.contentRating }}</td>
+            </tr>
+            <tr>
+                <th>Director:</th>
+                <td><a class="text-light" href="{{ director.get_absolute_url }}">{{ director }}</a></td>
+            </tr>
+        </table>
+                    <div class="col-md-4">
+                        <img class="img-fluid" alt="" src="{{ movie.picture }}">
+                    </div>
+    </section>
+
+    <section class="text-light fw-light fs-6 mb-4">
+        <h3 class="text-light fw-light fs-2">Actor List</h3>
+        <ul>
+            {% for act in act_list %}
+                <li>
+                    <a class="text-light" href="{{ act.get_actor_absolute_url }}">{{ act.Formovie }}</a>
+                </li>
+                <th>roleName:</th>
+                <td>{{ act.roleName }}</td>
+            {% empty %}
+                <li><em>The movie does not have actors.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+        <section class="text-light fw-light fs-6">
+        <h3 class="text-light fw-light fs-2">review List</h3>
+        Reviews: <td>{{ movie.reviews.count }}</td>
+        {% if login_status == "true" %}
+            <div>
+                 <a class="btn btn-outline-primary mt-3 mb-3" href="{{ movie.get_add_comment_url }}">Add comment</a>
+            </div>
+        {% endif %}
+        <ul>
+            {% for review in review_list %}
+                <li>
+                    <a class="text-light" href="{{ review.get_user_absolute_url }}">{{ review.Formovie }}</a><br>
+                    {{ review }}
+                </li>
+            {% empty %}
+                <li><em>The movie does not have reviews.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+    </div>
+
+{% endblock %}

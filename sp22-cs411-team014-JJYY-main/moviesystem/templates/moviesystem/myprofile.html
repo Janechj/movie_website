@@ -1,0 +1,77 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    My profile
+{% endblock %}
+
+{% block content %}
+<div class="ml-3 text-light fw-light">
+    <hr>
+    <h2 class="text-light fw-light fs-2">{{ user }}</h2>
+
+    <section class="mb-3">
+        <table>
+            <tr>
+                <th>name:</th>
+                <td>{{ user.userName }}</td>
+            </tr>
+            <tr>
+                <th>preferred Genres:</th>
+                <td>{{ user.preferredGenres }}</td>
+            </tr>
+            <tr>
+                <th>email:</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>phone Number:</th>
+                <td>{{ user.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>adult Status:</th>
+                <td>{{ user.adultStatus }}</td>
+            </tr>
+            {% if user_id == user.userID %}
+            <li>
+                  <a class="text-light"  href="{{ user.get_update_url }}">
+                    Edit Profile</a></li>
+            {% endif %}
+        </table>
+    </section>
+
+    <section class="mb-3">
+        <h3>Watched List</h3>
+        <ul>
+            {% for watch in watch_list %}
+                <li>
+                    <a class="text-light" href="{{ watch.get_movie_absolute_url }}">{{ watch }}</a>
+                </li>
+            {% empty %}
+                <li><em>your did not watch any movies.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section class="mb-3">
+        <h3>reviewed List</h3>
+        <ul>
+            {% for review in review_list %}
+                {% if user_id == user.userID %}
+                <li>
+                  <a class="text-light" href="{{ review.get_update_url }}">
+                    Edit Review</a></li>
+                  <a class="text-light" href="{{ review.get_delete_url }}">
+                    Delete Review</a></li>
+                {% endif %}
+                <li>
+                    <a class="text-light" href="{{ review.get_movie_absolute_url }}">{{ review.Foruser }}</a><br>
+                    {{ review }}
+                </li>
+            {% empty %}
+                <li><em>your did not have any reviews.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+
+{% endblock %}

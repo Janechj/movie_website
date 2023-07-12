@@ -1,0 +1,27 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Recommendation
+{% endblock %}
+
+{% block content %}
+    <ul class="text-light fw-light">
+    <hr>
+    </ul>
+    {% if login_status == "true" %}
+        <ul>
+            <h2 class="text-light fw-light fs-2">Recommendation</h2>
+            <div class="row">
+                {% for movie in recommendations %}
+                <div class="col-sm-2">
+                    <img class="img-fluid" alt="" src="{{ movie.picture }}">
+                    <a class="text-light" href="{{ movie.get_absolute_url }}">{{ movie.name }}</a>
+                </div>
+                {% empty %}
+                    <li><em>There are currently no good movie available.</em></li>
+                {% endfor %}
+        </div>
+        </ul>
+    {% endif %}
+    </ul>
+{% endblock %}

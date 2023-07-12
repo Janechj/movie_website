@@ -1,0 +1,23 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Act - {{ act }}
+{% endblock %}
+
+{% block content %}
+    <div data-gb-custom-block data-tag="extends" data-0='blog/base.html'></div>
+
+    <div data-gb-custom-block data-tag="block"></div>
+
+        <h1 class="text-light">New review</h1>
+            <form
+                method="post" class="post-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Create review</button>
+            </form>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Yearsmovie
+{% endblock %}
+
+{% block content %}
+    <div class="text-light fw-light container">
+    <hr>
+{##}
+{#    <ul class="text-light mb-3">#}
+{#        <h2 class="text-light fw-light fs-2">1990s Actor</h2>#}
+{#        {% for actor1990 in BestActor1990 %}#}
+{#            <li>#}
+{#                <a class="text-light" href="{{ actor1990.get_absolute_url }}">{{ actor1990.name }}</a>#}
+{#            </li>#}
+{#        {% empty %}#}
+{#            <li><em>There are currently no good actor available.</em></li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#    <ul class="text-light mb-3">#}
+{#        <h2 class="text-light fw-light fs-2">1990s Actor</h2>#}
+{#        {% for actor2000 in BestActor2000 %}#}
+{#            <li>#}
+{#                <a class="text-light" href="{{ actor2000.get_absolute_url }}">{{ actor2000.name }}</a>#}
+{#            </li>#}
+{#        {% empty %}#}
+{#            <li><em>There are currently no good actor available.</em></li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#    <ul class="text-light mb-3">#}
+{#        <h2 class="text-light fw-light fs-2">1990s Actor</h2>#}
+{#        {% for actor2010 in BestActor2010 %}#}
+{#            <li>#}
+{#                <a class="text-light" href="{{ actor2010.get_absolute_url }}">{{ actor2010.name }}</a>#}
+{#            </li>#}
+{#        {% empty %}#}
+{#            <li><em>There are currently no good actor available.</em></li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+    <div>
+        <h2 class="text-light fw-light fs-2">1990s Movie</h2>
+    <div class="container">
+            <div class="row">
+             {% for movie1990 in Bestmovie1990 %}
+                 <div class="col-sm-2">
+                     <img class="img-fluid" alt="" src="{{ movie1990.picture }}">
+                     <a class="text-light" href="{{ movie1990.get_absolute_url }}">{{ movie1990.name }}</a>
+                 </div>
+            {% empty %}
+                <li><em>There are currently no good movie available.</em></li>
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        <h4 class="text-light fw-light fs-2">1990s Actor</h4>
+        <div class="row">
+        {% for actor1990 in BestActor1990 %}
+            <div class="col-sm-2">
+              <a class="text-light " href="{{ actor1990.get_absolute_url }}">{{ actor1990.name }}</a>
+            </div>
+        {% empty %}
+            <li><em>There are currently no good movie available.</em></li>
+        {% endfor %}
+        </div>
+    </div>
+    <div>
+        <h2 class="text-light fw-light fs-2">2000s Movie</h2>
+        <div class="row">
+        {% for movie2000 in Bestmovie2000 %}
+            <div class="col-sm-2">
+              <img class="img-fluid" alt="" src="{{ movie2000.picture }}">
+              <a class="text-light " href="{{ movie2000.get_absolute_url }}">{{ movie2000.name }}</a>
+            </div>
+        {% empty %}
+            <li><em>There are currently no good movie available.</em></li>
+        {% endfor %}
+        </div>
+    </div>
+    <div>
+        <h4 class="text-light fw-light fs-2">2000s Actor</h4>
+        <div class="row">
+        {% for actor2000 in BestActor2000 %}
+            <div class="col-sm-2">
+              <a class="text-light " href="{{ actor2000.get_absolute_url }}">{{ actor2000.name }}</a>
+            </div>
+        {% empty %}
+            <li><em>There are currently no good movie available.</em></li>
+        {% endfor %}
+        </div>
+    </div>
+    <div>
+        <h2 class="text-light fw-light fs-2">2010s Movie</h2>
+        <div class="row">
+        {% for movie2010 in Bestmovie2010 %}
+            <div class="col-sm-2">
+              <img class="img-fluid" alt="" src="{{ movie2010.picture }}">
+              <a class="text-light" href="{{ movie2010.get_absolute_url }}">{{ movie2010.name }}</a>
+            </div>
+        {% empty %}
+            <li><em>There are currently no good movie available.</em></li>
+        {% endfor %}
+        </div>
+    </div>
+        <div>
+        <h4 class="text-light fw-light fs-2">2010s Actor</h4>
+        <div class="row">
+        {% for actor2010 in BestActor2010 %}
+            <div class="col-sm-2">
+              <a class="text-light " href="{{ actor2010.get_absolute_url }}">{{ actor2010.name }}</a>
+            </div>
+        {% empty %}
+            <li><em>There are currently no good movie available.</em></li>
+        {% endfor %}
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    JJYY movie
+{% endblock %}
+
+{% block content %}
+    <ul class="text-light fw-light">
+    <hr>
+
+    <ul class="text-light mb-3">
+        <h2 class="text-light fw-light fs-2">GOOD Actor</h2>
+        {% for actor in goodActor %}
+            <li>
+                <a class="text-light" href="{{ actor.get_absolute_url }}">{{ actor.name }}</a>
+{#                <th>The average rating from tomatoes of his movies is {{ averagerating }}#}
+            </li>
+        {% empty %}
+            <li><em>There are currently no good actor available.</em></li>
+        {% endfor %}
+    </ul>
+        <h2 class="text-light fw-light fs-2">HOT Movie</h2>
+        <div class="row">
+        {% for movie in hotMovie %}
+                <div class="col-sm-2">
+                    <img class="img-fluid" alt="" src="{{ movie.picture }}">
+                    <a class="text-light" href="{{ movie.get_absolute_url }}">{{ movie.name }}</a>
+                </div>
+        {% empty %}
+            <li><em>There are currently no good movie available.</em></li>
+        {% endfor %}
+        </div>
+    </ul>
+    </ul>
+{% endblock %}

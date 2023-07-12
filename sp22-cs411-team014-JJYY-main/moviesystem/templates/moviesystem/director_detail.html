@@ -1,0 +1,52 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Director - {{ director }}
+{% endblock %}
+
+{% block content %}
+    <div class="ml-3 text-light fw-light" >
+    <hr>
+    <h2 class="text-light fw-light fs-2">{{ director }}</h2>
+{#    <ul>#}
+{#        <li>#}
+{#          <a href="{{ student.get_update_url }}">#}
+{#            Edit Student</a></li>#}
+{#          <a href="{{ student.get_delete_url }}">#}
+{#            Delete Student</a></li>#}
+{#    </ul>#}
+
+    <section class="text-light fw-light fs-6 mb-4">
+        <table>
+            <tr>
+                <th>name:</th>
+                <td>{{ director.name }}</td>
+            </tr>
+            <tr>
+                <th>BirthYear:</th>
+                <td>{{ director.birthYear }}</td>
+            </tr>
+{#            {% if student.disambiguator %}#}
+{#                <tr>#}
+{#                    <th>Disambiguator:</th>#}
+{#                    <td>{{ student.disambiguator }}</td>#}
+{#                </tr>#}
+{#            {% endif %}#}
+        </table>
+    </section>
+
+    <section class="text-light fw-light fs-6">
+        <h3 class="fw-light fs-2">Direct Movie List</h3>
+        <ul>
+            {% for movie in movie_list %}
+                <li>
+                    <a class="text-light" href="{{ movie.get_absolute_url }}">{{ movie }}</a>
+                </li>
+            {% empty %}
+                <li><em>The director is not currently direct any movies.</em></li>
+            {% endfor %}
+        </ul>
+    </section>
+    </div>
+
+{% endblock %}

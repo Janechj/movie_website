@@ -1,0 +1,26 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Search - {{ search_title }}
+{% endblock %}
+
+<div class="text-light fw-light fs-6">
+{% block content %}
+    {% if search_title == '' %}
+        <p>No Results</p>
+    {% else %}
+        <ul class="text-light fw-light">
+        <h3 class="text-light fw-light fs-5">Results for {{ search_title }}, find {{ search_movie_count }} results</h3>
+        <hr>
+        {% for movie in search_movie %}
+            <li>
+                <a class="text-light" href="{{ movie.get_absolute_url }}">{{ movie }}</a>
+            </li>
+            <p>director:{{ movie.directorID }}</p>
+        {% empty %}
+            <p>No Results</p>
+        {% endfor %}
+    {% endif %}
+    </ul>
+</div>
+{% endblock %}

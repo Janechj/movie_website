@@ -1,0 +1,15 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Update Review
+{% endblock %}
+
+{% block content %}
+    <form class="text-light"
+        action="{{ review.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Review</button>
+    </form>
+{% endblock %}

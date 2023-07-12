@@ -1,0 +1,42 @@
+{% extends 'moviesystem/base.html' %}
+
+{% block title %}
+    Movie List
+{% endblock %}
+
+{% block content %}
+    <ul class="text-light fw-light">
+    <h2 class="text-light fw-light fs-2">Actor List</h2>
+    <hr>
+
+    <ul class="text-light">
+        {% for actor in actor_list %}
+            <li >
+                <a class="text-light" href="{{ actor.get_absolute_url }}">{{ actor }}</a>
+            </li>
+        {% empty %}
+            <li><em>There are currently no section available.</em></li>
+        {% endfor %}
+
+<nav aria-label="Page navigation example" >
+      {% if is_paginated %}
+          <ul class="justify-content-center pagination"  >
+      {% if previous_page_url %}
+          <a class="page-link" href="{{ previous_page_url }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span></a>
+{#      </a>#}
+{#              <li class="page-item"><a class="page-link" href="">Previous</a></li>#}
+      {% endif %}
+        <li class="page-item"><a class="page-link">Page {{ actor_list.number }}
+        of {{ paginator.num_pages }}</a></li>
+      {% if next_page_url %}
+             <a class="page-link" href="{{ next_page_url }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span></a>
+{#          <li class="page-item"><a class="page-link" href="{{ next_page_url }}">Next</a></li>#}
+      {% endif %}
+    </ul>
+  {% endif %}
+</nav>
+    </ul>
+    </ul>
+{% endblock %}
